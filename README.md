@@ -2,6 +2,10 @@
 
 ## Índice de Documentación
 
+- [📖 Ver toda la documentación de corrido](./DAS.md)
+ 
+> Nota: la carpeta `docs/` contiene los archivos fuente organizados por sección. Usa los enlaces en este índice para abrir los documentos individuales o la opción «Ver toda la documentación de corrido» para una vista única.
+
 ### 1. Información General
 - [Documento Principal de Información](docs/01-informacion-general.md)
   - Control de cambios y revisiones

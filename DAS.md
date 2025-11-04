@@ -6,6 +6,30 @@ Nexa
 **Arquitectos**  
 Maicol Oviedo Quintero
 
+## Índice 
+
+- [1. Información General](#1-información-general)
+  - [Control de cambios y revisiones](#control-de-cambios-y-revisiones)
+  - [Propósito del proyecto](#propósito-del-proyecto)
+- [2. Motivadores de la Arquitectura](#2-motivadores-de-la-arquitectura)
+  - [2.1 Restricciones Técnicas](#21-restricciones-técnicas)
+  - [2.2 Restricciones de Negocio](#22-restricciones-de-negocio) 
+  - [2.3 Atributos de Calidad](#23-atributos-de-calidad)
+    - [Disponibilidad](#disponibilidad)
+    - [Confiabilidad](#confiabilidad)
+    - [Rendimiento](#rendimiento)
+    - [Seguridad](#seguridad)
+  - [2.4 Funcionalidades Críticas](#24-funcionalidades-críticas)
+- [3. Arquetipo de Solución](#3-arquetipo-de-solución)
+- [4. Arquitectura de Solución](#4-arquitectura-de-solución)
+- [5. Línea Base Arquitectónica](#5-línea-base-arquitectónica)
+  - [Componentes Adoptados](#componentes-adoptados)
+  - [Componentes Desarrollados](#componentes-desarrollados)
+- [6. Justificación de la Solución](#6-justificación-de-la-solución)
+  - [Ventajas](#ventajas)
+
+---
+
 ## Control de cambios y revisiones
 
 | Versión | Fecha | Autor | Descripción de cambios |
@@ -124,7 +148,7 @@ Las funcionalidades críticas son las operaciones esenciales con restricciones f
 
 Un arquetipo de solución es un patrón genérico o framework de alto nivel para resolver problemas similares, de forma agnóstica a tecnologías específicas. Para Nexa, el arquetipo se basa en una arquitectura modular con componentes reutilizables para seguridad, gestión de API, identidad, pagos, notificaciones, caché, almacenamiento de claves, almacenamiento general, autenticación, base de datos, monitoreo, catálogo de parámetros y plataformas de aplicación cloud. La intención es promover escalabilidad, seguridad y eficiencia, motivado por las necesidades de pequeños negocios. Cada componente se adopta por su uso en entornos SaaS, justificado por reducción de complejidad y costos.
 
-![Arquetipo de Referencia](./diagramas/arquetipo_referencia.png)
+![Arquetipo de Referencia](./diagramas/arqueotipo.png)
 
 Detalle de componentes agnósticos (basado en "alternativa solucion", "bloques construccion", "bloques construccion adoptados", "bloques construccion desarrolados"):
 
@@ -211,16 +235,6 @@ A continuación, se detallan los componentes adoptados y desarrollados, con just
 | Front End Nexa | NO | Lenguaje de Desarrollo | Microsoft | TypeScript | 5.9.3 | Lenguaje moderno que agrega tipado y herramientas avanzadas a JavaScript, permitiendo un código más seguro, mantenible y escalable en el frontend. | Es la mejor opción para Nexa porque mejora la calidad del código, reduce errores en tiempo de desarrollo y permite crear interfaces más estables y predecibles al trabajar junto con Nuxt.js. |
 | Front End Nexa | NO | Framework de desarrollo | NuxtLabs | Spring Framework | 4.x (La más reciente y estable) | Framework moderno basado en Vue que permite crear aplicaciones web muy rápidas, reactivas y optimizadas para buscadores. Usa renderizado en servidor para mejorar el SEO, organiza automáticamente las rutas de la app y se integra de forma nativa con TypeScript para un desarrollo más seguro y ordenado. | Es la mejor opción para Nexa porque combina excelente rendimiento, alta reactividad y posicionamiento SEO gracias a su renderizado en servidor (SSR). Nuxt.js, como framework full-stack basado en Vue.js, ofrece una interfaz extremadamente dinámica y sensible a las interacciones del usuario. Además, integra de forma nativa el módulo @nuxt/image, que optimiza automáticamente las imágenes (WebP/AVIF), aplica lazy loading y adapta su tamaño a cada dispositivo. Esta combinación mejora la velocidad de carga, reduce el consumo de recursos y ofrece una experiencia visual fluida y moderna, ideal para una plataforma SaaS con catálogos altamente visuales como Nexa. |
 
-#### 7.1.1 Componente 1
-
-[Detalle, intención, justificación].
-
-[Repite para más componentes].
-
-
-## 8. Justificación alternativa de solución
-
-Una justificación de alternativa evalúa opciones y selecciona la mejor basada en restricciones.
 
 ### 8.1 Justificación
 
@@ -251,54 +265,216 @@ Para Nexa, la alternativa seleccionada se basa en componentes como WAF, API Gate
 - Costos basados en uso para startup.
 - Integración simple con Firebase/Stripe.
 
-### 8.3 Desventajas
 
-- Dependencia de proveedores externos.
-- Curva de aprendizaje inicial para integración.
-- Posibles costos variables en alto uso.
+# Documento de Arquitectura de Software (DAS) — Lectura completa
 
+**Proyecto**  
+Nexa
 
-## 9. Vistas de arquitectura del sistema
+**Arquitectos**  
+Maicol Oviedo Quintero
 
-Las vistas describen aspectos específicos del sistema.
+---
 
-### 9.1 Vista Funcional/Vista de Escenarios/Vista de Casos de Uso
+AVISO: Este documento es una vista consolidada de la documentación del proyecto. Los archivos fuente permanecen en la carpeta `docs/`. Las imágenes referenciadas aquí apuntan a `./diagramas/`.
 
-Vista que enfoca en funcionalidades y escenarios.
+## 7. Vistas de Arquitectura
 
-#### 9.1.12.3 Mapa de impacto
+### 7.1 Diagrama de Secuencia
 
-[Usa tu Excel "mapa de empatia" – mapeado como impacto/empatía de usuarios. Describe o enlaza imagen].
+El siguiente diagrama de secuencia muestra las interacciones principales entre los componentes del sistema durante el flujo de creación y gestión de una tienda:
 
-#### 9.1.19 Trade off de atributos de calidad
+![Diagrama de Secuencia](./diagramas/secuencia.png)
 
-[De tu Excel "trade off". Muestra en tabla o diagrama, explica].
+#### Descripción del Flujo:
+1. El usuario inicia sesión usando Firebase Auth
+2. Crea una nueva tienda que pasa por API Gateway
+3. El backend procesa la solicitud y crea los registros necesarios
+4. Se activa el proceso de suscripción con Stripe
+5. Las notificaciones son enviadas por Mailgun
+6. Los datos se almacenan en Firestore
+7. Las imágenes se procesan y almacenan en Firebase Storage
 
-### 9.3 Vista de Despliegue/Vista de Desarrollo/Vista de Implementación
+### 7.2 Paquetes Frontend/Backend
 
-Vista para implementación y despliegue.
+Los diagramas de paquetes muestran la organización lógica del código tanto en el frontend como en el backend:
 
-#### 9.3.1 Diagrama de componentes
+#### Frontend (Nuxt.js + TypeScript)
+![Diagrama de Paquetes Frontend](./diagramas/paquetes_front.png)
 
-[De tu Excel "modelos de componenetes".]
+Organización de paquetes frontend:
+- pages/: Rutas y vistas de la aplicación
+- components/: Componentes reutilizables
+- stores/: Estado global con Pinia
+- services/: Servicios de API y externos
+- utils/: Funciones de utilidad
+- types/: Definiciones de TypeScript
 
-##### 9.3.1.1 Componente 1
+#### Backend (NestJS + TypeScript)
+![Diagrama de Paquetes Backend](./diagramas/paquetes_back.png)
 
-<image-card alt="Diagrama" src="./diagramas/componente1.png" ></image-card>  
-[Documentación].
+Organización de paquetes backend:
+- modules/: Módulos principales de la aplicación
+- core/: Lógica central y compartida
+- infrastructure/: Adaptadores de infraestructura
+- domain/: Entidades y reglas de negocio
+- application/: Casos de uso
 
-[Repite].
+### 7.3 Componentes Frontend/Backend
 
-#### 9.3.2 Diagrama de paquetes
+Los diagramas de componentes muestran la estructura y relaciones entre los diferentes componentes del sistema:
 
-[De tu Excel "modelo de paquetes". Similar, con enlaces a imágenes].
+#### Frontend
+![Diagrama de Componentes Frontend](./diagramas/componentes_front.png)
 
-### 9.4 Vista de Procesos
+Componentes principales frontend:
+- AuthModule: Gestión de autenticación
+- StoreModule: Gestión de tiendas
+- ProductModule: Gestión de productos
+- CartModule: Carrito de compras
+- UIComponents: Componentes de interfaz
+- ApiService: Comunicación con backend
 
-Vista para flujos dinámicos.
+#### Backend
+![Diagrama de Componentes Backend](./diagramas/componentes_back.png)
 
-#### 9.4.1 Diagrama de secuencia
+Componentes principales backend:
+- AuthController: Control de autenticación
+- StoreController: Control de tiendas
+- ProductController: Control de productos
+- PaymentService: Integración con Stripe
+- NotificationService: Envío de correos
+- StorageService: Gestión de archivos
 
-[De tu Excel "modelo de secuencia". Enlaza imágenes/documenta].
+## 1. Información General
+
+## Índice (navegación)
+
+Este índice permite navegar rápidamente por las secciones principales de este documento. Puedes usar los enlaces internos (anclas) o abrir directamente el archivo fuente en `docs/`.
+
+- [1. Información General](#1-información-general) — [fuente](docs/01-informacion-general.md)
+- [2. Motivadores de la Arquitectura](#2-motivadores-de-la-arquitectura) — [fuente](docs/02-motivadores.md)
+  - [2.1 Restricciones Técnicas](#21-restricciones-técnicas) — [fuente](docs/02-motivadores/2.1-restricciones-tecnicas.md)
+  - [2.2 Restricciones de Negocio](#22-restricciones-de-negocio) — [fuente](docs/02-motivadores/2.2-restricciones-negocio.md)
+  - [2.3 Atributos de Calidad](#23-atributos-de-calidad) — [fuente](docs/02-motivadores/2.3-atributos-calidad.md)
+  - [2.4 Funcionalidades Críticas](#24-funcionalidades-críticas) — [fuente](docs/02-motivadores/2.4-funcionalidades-criticas.md)
+- [3. Arquetipo de Solución](#5-arquetipo-de-solución) — [fuente](docs/03-arquetipo.md)
+  - [Detalle de Componentes](#detalle-de-componentes) — [fuente](docs/03-arquetipo/componentes.md)
+- [4. Arquitectura de Solución](#6-arquitectura-de-solución) — [fuente](docs/04-arquitectura.md)
+  - [Detalles de Implementación](#detalles-de-implementación) — [fuente](docs/04-arquitectura/implementacion.md)
+- [5. Línea Base Arquitectónica](#7-línea-base-arquitectónica) — [fuente](docs/05-linea-base.md)
+  - [Componentes Adoptados](#componentes-adoptados) — [fuente](docs/05-linea-base/componentes-adoptados.md)
+  - [Componentes Desarrollados](#componentes-desarrollados) — [fuente](docs/05-linea-base/componentes-desarrollados.md)
+- [6. Justificación de la Solución](#8-justificación-alternativa-de-solución) — [fuente](docs/06-justificacion.md)
+- [7. Vistas de Arquitectura](#7-vistas-de-arquitectura) — [fuente](docs/07-vistas.md)
+  - [Diagrama de Secuencia](#diagrama-de-secuencia) — [fuente](docs/secuencia.md)
+  - [Paquetes Front / Back](#paquetes-front--back) — [fuente](docs/paquetes_front.md)
+  - [Componentes Front / Back](#componentes-front--back) — [fuente](docs/componentes_front.md)
+
+---
+
+# 1. Información General
+
+## Control de cambios y revisiones
+
+| Versión | Fecha | Autor | Descripción de cambios |
+|---------|-------|-------|------------------------|
+| 1.0    | 11/2025 | Maicol Oviedo Quintero | Versión inicial del documento. |
+
+## Propósito del proyecto
+
+Para Emprendedores y pequeños negocios que venden productos (ropa, accesorios, belleza, etc.) por redes sociales y desean digitalizar su tienda sin conocimientos técnicos. Que necesitan organizar su catálogo, pedidos e inventario de forma sencilla y profesional sin depender de hojas de cálculo o mensajes dispersos. Además no tienen claridad sobre sus ventas, productos más vendidos ni el crecimiento del negocio, porque todo se maneja de forma manual. 
+
+Nexa es una Plataforma web que ofrece organización profesional, gestión de pedidos y visibilidad clara del rendimiento del negocio. Facilita la creación de una tienda online profesional en minutos, permitiendo a los negocios vender de forma más organizada, automatizada y escalable.
+
+A diferencia de muchos negocios que utilizan cuadernos, hojas de cálculo o simplemente memoria para llevar el control de productos y ventas. Algunos usan apps como Excel, Shopify o Tiendanube, pero no están optimizadas para usuarios sin conocimientos técnicos o con necesidades simples. Estas herramientas suelen ser complejas, poco intuitivas o demasiado costosas para negocios que están comenzando.
+
+Nuestro producto es una plataforma simple e intuitiva, diseñada para emprendedores y pequeños negocios que venden principalmente a través de redes sociales. Pensada para usuarios sin experiencia técnica, permite crear una tienda online funcional en minutos, con control de stock y estadísticas claras de ventas. A precios accesibles y sin complicaciones técnicas, la plataforma integra fácilmente canales como WhatsApp, convirtiendo la venta informal en una operación más profesional, organizada y escalable.
+
+---
+
+## 2. Motivadores de la Arquitectura
+
+# 2. Motivadores de la Arquitectura
+
+Los motivadores de la arquitectura son los factores clave que guían el diseño y desarrollo del proyecto, asegurando que la solución cumpla con las necesidades técnicas, de negocio y de calidad.
+
+## 2.1 Restricciones Técnicas
+
+# Restricciones Técnicas
+
+Las restricciones técnicas son limitaciones impuestas por el entorno tecnológico, como hardware, software o estándares, que impactan el diseño. A continuación, se listan las restricciones técnicas identificadas, con su tipo y justificación:
+
+| Tipo | Restricción | Justificación |
+|------|-------------|---------------|
+| Diseño | Se debe propender por la aplicación de prácticas basadas en Clean Architecture. | Reduce costos de mantenimiento y evolución. La modularidad permite añadir nuevas funcionalidades (Ej. Agregar metodos de pago) o actualizar integraciones (Ej. WhatsApp API) rápidamente, asegurando que Nexa sea competitiva y adaptable. Asi se pueden generar mejoras para el cliente de manera fácil y segura. |
+| Implementación | Se debe propender por la aplicación de prácticas relacionadas con Clean Code. | Aumenta la calidad y reduce errores en producción. Un código legible permite corregir bugs rápidamente mejorando la experiencia de los clientes. |
+| Diseño | Se debe propender por la aplicación de patrones de diseño que promuevan un diseño con bajo acoplamiento y alta cohesión. | Un diseño con bajo acoplamiento nos permite modificar un componente de la aplicación sin afectar a otros. La alta cohesión asegura que las funcionalidades relacionadas estén agrupadas, lo que hace el código más modular, escalable y robusto para el futuro. |
+| Implementación | Se debe propender por la adopción de la metodología de desarrollo eXtreme Programming, o al menos gran cantidad de las prácticas más recomendadas. | Es importante para Nexa porque permite al cliente recibir nuevas funcionalidades rápidamente y con alta calidad, como mejoras en la búsqueda de productos o la gestión de suscripciones, sin comprometer la estabilidad. Prácticas como TDD aseguran que funcionalidades críticas, estén libres de errores. Esto garantiza que Nexa evolucione rápidamente para satisfacer las necesidades del mercado, aumentando la satisfacción de los usuarios y acelerando el retorno de inversión. |
+| Implementación | Se debe propender por la adopción de prácticas de DevOps, relacionadas con las estrategias de integración continua, entrega continua y despliegue continuo. | La adopción de prácticas DevOps —como integración continua, entrega continua y despliegue continuo— permite que Nexa evolucione de forma rápida, confiable y sin interrupciones visibles para el usuario. Esto se traduce en actualizaciones frecuentes, corrección de errores sin afectar la operación y una experiencia estable incluso mientras el producto mejora. Para el cliente, significa contar con una plataforma que siempre está disponible, actualizada y alineada con sus necesidades reales, sin tiempos muertos ni procesos manuales que generen incertidumbre. |
+| Diseño | Se debe propender por la adopción de bloques de construcción que promuevan aceleradores dentro del desarrollo del producto. | La adopción de bloques de construcción reutilizables permite acelerar el desarrollo de nuevas funcionalidades sin comprometer la calidad ni la estabilidad del sistema. Para el cliente, esto se traduce en mejoras visibles en menos tiempo, una evolución constante del producto y una experiencia más fluida, sin demoras innecesarias ni interrupciones. |
+| Diseño | Se debe propender por construcción aplicaciones de naturaleza Cloud Enabled o Cloud Native. | Construir Nexa como una aplicación Cloud Enabled o Cloud Native permite aprovechar al máximo las capacidades de Firebase, como escalabilidad automática, alta disponibilidad y servicios integrados. Esto garantiza que la plataforma funcione de forma fluida, sin interrupciones, incluso ante picos de uso o expansión multitienda. Para el cliente, significa contar con una solución confiable, siempre disponible y preparada para crecer sin necesidad de reestructuraciones técnicas. |
+| Diseño | Se debe propender por la construcción de aplicaciones que sigan los principios del manifiesto reactivo. | Construir Nexa siguiendo los principios del manifiesto reactivo permite que la plataforma sea responsiva, resiliente, elástica y orientada a mensajes. Esto garantiza que el sistema responda rápidamente, se recupere ante fallos sin afectar al usuario, se adapte a variaciones en la carga y mantenga una comunicación fluida entre módulos. Para el cliente, esto se traduce en una experiencia confiable, continua y ágil, incluso en escenarios de alta demanda o condiciones inesperadas. |
+| Implementación | Se debe propender por la construcción de aplicaciones que sigan las prácticas definidas en los 12 factores de aplicación más los 3 extendidos. | Seguir las prácticas de los 12 factores (más los 3 extendidos) ayuda a que Nexa sea más ordenada, escalable y fácil de mantener. Esto permite que la app funcione bien en la nube, se actualice sin complicaciones y se adapte a nuevas necesidades sin romper lo que ya existe. Para el cliente, significa tener una plataforma confiable, que mejora constantemente y que no se cae ni se vuelve lenta cuando crece. |
+| Diseño | Se debe propender por la arquitectura de sistemas nativos para la nube basados en los pilares fundamentales del Well Architected Framework. | Permite construir una plataforma confiable, segura, eficiente y preparada para crecer. Esto significa que el sistema estará siempre disponible, se recuperará ante fallos, usará los recursos de forma inteligente y protegerá los datos del cliente. Para el usuario final, se traduce en una experiencia estable, rápida y segura, incluso cuando la demanda aumenta o el producto evoluciona. |
+| Diseño | Se debe propender por la arquitectura de un sistema nativo para la nube basado en las prácticas definidas dentro del Cloud Adoption Framework. | Seguir las prácticas del Cloud Adoption Framework permite que Nexa no solo esté bien construida técnicamente, sino que evolucione de forma alineada con los objetivos del negocio, la cultura del equipo y las necesidades reales del cliente. Este marco guía desde la estrategia hasta la operación, ayudando a tomar decisiones claras sobre gobernanza, seguridad, estructura organizativa y gestión del cambio. Para el cliente, esto se traduce en una plataforma que no solo funciona bien, sino que está pensada para crecer de forma sostenible, con procesos claros y decisiones coherentes. |
+| Metodológico | Se debe propender por la aplicación de metodologías ágiles. | Las metodologías ágiles, como Scrum, nos permiten ser flexibles y responder rápidamente a los cambios del mercado. Al trabajar en ciclos cortos (sprints), podemos entregar valor a los emprendedores de Nexa de manera constante y ajustar el producto en función de su feedback. |
+| Diseño | Se debe propender por la documentación de APIs y módulos, usando el principio code as documentation. | Es fundamental para Nexa porque permite al cliente mantener una plataforma fácil de actualizar y escalar, reduciendo costos y tiempos de desarrollo. Por ejemplo, una API bien documentada asegura que los desarrolladores integren nuevos servicios rápidamente sin errores, mientras que un código autoexplicativo (siguiendo Clean Code) minimiza la necesidad de manuales extensos para módulos. Esto garantiza que los vendedores disfruten de una plataforma estable y que el cliente incorpore nuevos desarrolladores o socios externos sin retrasos, manteniendo competitividad y continuidad. |
+
+## 2.2 Restricciones de negocio
+
+# Restricciones de Negocio
+
+Las restricciones de negocio son limitaciones derivadas de objetivos comerciales, presupuestos o regulaciones. A continuación, se listan las restricciones de negocio identificadas, con su tipo, importancia, riesgos y planes de acción:
+
+| Tipo | Restricción | Importancia para el proyecto | Riesgo | Plan Acción |
+|------|-------------|------------------------------|--------|-------------|
+| Humano | La product owner no posee un par que pueda atender sus asuntos en caso de alguna contingencia o eventualidad que ocasionen algún tema que le obligue la no participación dentro del proyecto. | Alta. La ausencia del product owner sin respaldo puede detener decisiones clave y validaciones importantes para el avance del proyecto. | Retraso del proyecto; Fracaso del proyecto | Se debe garantizar que siempre se tenga al menos un respaldo para el product Owner. Se debe establecer un plan de acción claro para evitar el fracaso del proyecto, incluyendo respaldo para roles críticos, revisión constante de prioridades, y entregables validados en ciclos cortos. |
+| Humano | En varias ocasiones se ha identificado que no es posible que las personas que conocen del negocio participen en sesiones clave de definición del alcance, lo que ha llevado a que personas que no son expertas en el proceso, tomen decisiones que luego son refutadas por los actores principales y conocedores, generando reprocesos. | Decisiones incorrectas generan retrabajo y confusión. | Retraso del proyecto; Reprocesos | Asegurar la participación de expertos clave en todas las sesiones críticas y validar decisiones mediante actas. Se debe documentar y validar cada decisión funcional con los actores del negocio antes de iniciar su implementación, asegurando que las definiciones estén claras, aprobadas y disponibles para consulta por todo el equipo. |
+| Humano | El product owner asignado al proyecto no tiene el tiempo de dedicación necesario a causa de otras responsabilidades y actividades del día a día que le consumen su agenda, lo que entonces hace que no se puedan atender sesiones clave del proyecto para aclarar y definir aspectos que permitan avanzar con el desarrollo y cumplir de esta manera con el tiempo acordado. | Sin participación activa, se pierde validación de escenarios, claridad en decisiones y alineación con el negocio, se retrasa el proyecto. | Retraso del proyecto; Fracaso del proyecto; Reprocesos | Definir horarios de disponibilidad obligatorios, priorizar reuniones críticas y considerar apoyo de un co-product owner o asistente técnico. Se debe establecer un mecanismo de seguimiento semanal con responsables clave, donde se revisen avances reales, bloqueos y decisiones pendientes, asegurando que todo el equipo esté alineado y que los entregables mantengan utilidad perceptible para el negocio. Toda definición funcional debe quedar documentada y validada por los actores del negocio antes de iniciar su implementación, asegurando trazabilidad y evitando ajustes posteriores por falta de alineación. |
+| Presupuesto | El proyecto tiene un presupuesto de $2000.000 para el desarrollo, puesta en producción, mantenimiento y soporte del producto por el siguiente año. | Si no se definen criterios claros de asignación, seguimiento y priorización, el presupuesto puede diluirse en tareas no esenciales, comprometiendo entregables clave y afectando la sostenibilidad del producto. | Fracaso del proyecto | Se debe aclarar un alcance realista y que le brinde valor al producto para no gastar recursos en funcionalidades poco importantes o innecesarias. Sin una definición clara y validada del alcance, se corre el riesgo de invertir tiempo y presupuesto en desarrollos que no aportan valor perceptible al negocio ni al usuario final. |
+| Presupuesto | El proyecto aunque tiene los recursos necesarios para el desarrollo, irá desembolsando el valor de acuerdo a los avances e hitos cumplidos a satisfacción por el cliente, aún sabiendo, la gran incertidumbre, respecto a la definición del producto deseado. | Riesgo de retraso por indecisión del cliente. | Fracaso del proyecto | Definir entregables claros y aceptación formal por cada hito. Mantener comunicación constante con el cliente. |
+| Procesos | El cliente no tiene un proceso claramente definido, y aun así, ha insistido en avanzar en victorias tempranas, construyendo los aspectos que vaya definiendo sobre el camino. | Cuando no hay una base clara del proceso, cada decisión se vuelve tentativa y cada funcionalidad corre el riesgo de quedar mal alineada. En Nexa, donde buscamos que cada módulo tenga lógica perceptible y utilidad real, avanzar sin esa claridad puede llevar a construir cosas que luego hay que desmontar o rehacer. | Reprocesos; Retraso del proyecto | Documentar procesos mínimos necesarios, establecer un flujo de aprobación antes de avanzar. Además, se deben establecer entregables acotados que puedan ajustarse sin afectar lo ya construido, evitando así retrabajos innecesarios. Para evitar retrasos, se debe acordar con el cliente que cada nueva definición se valide antes de desarrollarla. Las victorias tempranas deben construirse sobre entregables pequeños y flexibles, que puedan ajustarse sin afectar lo ya avanzado. Esto mantiene el ritmo sin comprometer la estabilidad del proyecto. |
+| Procesos | El cliente espera que TI sea un actor clave responsable de la definición del proceso de negocio, cuando no es su responsabilidad, dado que TI habilita procesos de negocio y no los define. | Confusión de roles puede generar reprocesos y mal diseño del sistema. | Reprocesos; Fracaso del proyecto; Retraso del proyecto; Malas definiciones | Se debe aclarar desde el inicio que TI no define procesos de negocio, sino que los habilita. Toda decisión funcional debe venir validada por los responsables del negocio, y TI solo la traduce en soluciones tecnológicas. Esto evita malentendidos y ajustes posteriores por definiciones incorrectas. Para que el proyecto no se descarrile, es clave dejar claro desde el principio que TI no define cómo debe funcionar el negocio. Esa responsabilidad es del cliente. TI está para convertir esas decisiones en soluciones tecnológicas, no para inventarlas. Si eso no se aclara, se corre el riesgo de construir cosas que luego no sirven. Para evitar malas definiciones, hay que dejar claro desde el principio que TI no decide cómo debe funcionar el negocio. Esa parte le corresponde al cliente. Si no se define bien desde el lado funcional, TI termina construyendo sobre suposiciones, y eso casi siempre lleva a ajustes, reprocesos o entregables que no sirven. |
+| Procesos | Se debe asegurar el cumplimiento de la normatividad colombiana vigente en materia de comercio electrónico, protección al consumidor y tributación digital, especialmente en lo relacionado con el cobro de suscripciones en plataformas SaaS. | Afecta directamente los flujos de pago de suscripciones, que deben contemplar reglas legales específicas y trazabilidad completa. | Retraso del proyecto | Incluir revisión legal periódica, asignar responsable de cumplimiento normativo y realizar auditorías internas de avance. |
+
+## 2.3 Atributos de calidad
+
+# Atributos de Calidad
+
+Los atributos de calidad definen las características no funcionales como rendimiento, usabilidad, etc. A continuación, se detallan los atributos identificados, con sus características y escenarios de calidad.
+
+#### Disponibilidad
+
+##### Disponibilidad continua para acceso en cualquier momento
+
+| Identificador | Nombre | Tipo | Objetivo | Descripción | Criterio éxito | Fuente del estímulo | Estímulo | Ambiente | Artefacto | Respuesta | Medida de la respuesta | ¿Cumplió? |
+|---------------|--------|------|----------|-------------|---------------|---------------------|----------|----------|-----------|-----------|------------------------|-----------|
+| ESC-CAL-Disponibilidad-0001 | Acceso exitoso a la tienda en cualquier momento. | Flujo básico | Garantizar que la tienda esté disponible para cualquier usuario en todo momento. | Escenario que permite verificar que cuando un usuario intente ingresar a la plataforma se puede acceder en cualquier momento sin interrupciones. | El usuario final intenta ingresar a la plataforma y esta esta accesible y responde correctamente en al menos el 95% de los intentos de acceso mensuales. | Cualquier usuario que haga uso de la plataforma. | Cualquier usuario, intenta acceder y navegar por la plataforma en cualquier momento. | Operación normal | Sistema | El sistema direcciona al usuario a la página principal donde le muestra las opciones disponibles de acuerdo al rol que posee. | El usuario ha podido acceder a la tienda de forma exitosa y sin demoras. La tienda ha cargado correctamente en al menos el 95% de los intentos de acceso mensuales. | No |
+| ESC-CAL-Disponibilidad-0002 | El usuario intenta acceder y percibe una interrupción. | Flujo alterno | Verificar tolerancia a interrupciones breves. | Escenario que permite evaluar cómo la tienda responde a interrupciones temporales del servicio. | El usuario final intenta ingresar a la plataforma y esta esta inaccesible. Las interrupciones no deben ocurrir en más del 5% de los intentos de acceso mensuales | Cualquier usuario que haga uso de la plataforma. | Un usuario intenta acceder a la plataforma mientras presenta una falla o está en mantenimiento. | Operación normal | Sistema | El sistema muestra un mensaje claro y amigable de que la página no se encuentra disponible en el momento. | El usuario recibe una respuesta del sistema que indica la indisponibilidad temporal, en lugar de un error de conexión o una página en blanco. Esto ocurre en un máximo del 5% de los intentos de acceso mensuales. | No |
+
+#### Confiabilidad
+
+##### Conservación estable y coherente de la información registrada
+
+| Identificador | Nombre | Tipo | Objetivo | Descripción | Criterio éxito | Fuente del estímulo | Estímulo | Ambiente | Artefacto | Respuesta | Medida de la respuesta | ¿Cumplió? |
+|---------------|--------|------|----------|-------------|---------------|---------------------|----------|----------|-----------|-----------|------------------------|-----------|
+| ESC-CAL-Confiabilidad-0003 | El usuario espera que toda la información que gestiona se mantenga intacta, sin alteraciones inesperadas. | Flujo básico | Garantizar que la información registrada por el usuario permanezca íntegra y sin alteraciones. | Escenario que permite Garantizar que la información registrada en la aplicación se conserve de forma estable, coherente y sin alteraciones inesperadas | Toda la información registrada permanece intacta y coherente en todas las consultas y visualizaciones posteriores a su gestión. | Cualquier usuario que interactúa con la aplicación. | El usuario accede a la aplicación y revisa la información previamente registrada. | Operación normal | Sistema | La aplicación conserva la información registrada de forma íntegra y estable, sin alteraciones, pérdidas ni inconsistencias inesperadas. | El usuario accede a la aplicación en cualquier momento y revisa la información que había gestionado previamente. Al hacerlo, confirma que todo permanece igual, sin cambios inesperados, errores ni pérdidas. | No |
+
+#### Rendimiento
+
+##### Rendimiento general y navegación fluida de la aplicación
+
+| Identificador | Nombre | Tipo | Objetivo | Descripción | Criterio éxito | Fuente del estímulo | Estímulo | Ambiente | Artefacto | Respuesta | Medida de la respuesta | ¿Cumplió? |
+|---------------|--------|------|----------|-------------|---------------|---------------------|----------|----------|-----------|-----------|------------------------|-----------|
+| ESC-CAL-Rendimiento-0004 | Rendimiento general y navegación fluida de la aplicación | Flujo básico | Garantizar que todas las acciones del usuario se ejecuten de forma inmediata y fluida | Escenario que permite verificar que cada acción que realiza el usuario se ejecute dentro de los tiempos óptimos definidos por la tabla de rendimiento de Nexa. | Todas las acciones se ejecutan dentro de los tiempos óptimos de respuesta establecidos | Cualquier usuario que interactúa con la aplicación. | El usuario realiza cualquier acción dentro de la plataforma | Operación normal | Sistema | La aplicación responde de forma inmediata a cada acción, sin bloqueos ni retrasos perceptibles | Cada acción realizada por el usuario se completa dentro de los tiempos definidos como óptimos en la tabla de rendimiento de Nexa, sin demoras ni interrupciones. | No |
+
+#### Seguridad
+
+##### Se requiere que el sistema restrinja las acciones según el rol asignado a cada usuario
+
+| Identificador | Nombre | Tipo | Objetivo | Descripción | Criterio éxito | Fuente del estímulo | Estímulo | Ambiente | Artefacto | Respuesta | Medida de la respuesta | ¿Cumplió? |
+|---------------|--------|------|----------|-------------|---------------|---------------------|----------|----------|-----------|-----------|------------------------|-----------|
+| ESC-CAL-Seguridad-0005 | Acceso a acciones o modulos permitidos según rol | Flujo básico | Asegurar que un usuario solo pueda acceder a lo que su rol permite | Escenario que permite garantizar que cuando un usuario ingrese el sistema muestre y permita únicamente las funciones y recursos permitidos según el rol asignado al usuario | El usuario no puede ver ni ejecutar funciones fuera de su rol. La navegación se mantiene dentro de los límites definidos. | Cualquier usuario que haga uso de la plataforma | El usuario interactúa con la aplicación según su rol asignado y accede a las acciones permitadas según el mismo | Operación normal | Sistema | La aplicación muestra solo las funciones permitidas para ese rol, sin exponer accesos indebidos | El usuario final logra ejecutar la acción permitida por su rol, el sistema solo muestra las acciones permitidas según su rol evitando confusiones. El acceso se restrict
 
 

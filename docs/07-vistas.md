@@ -51,8 +51,5 @@
 ### Flujos Principales
 
 1. **Registro de Usuario**
-2. **Creación de Tienda**
-3. **Proceso de Compra**
-4. **Gestión de Suscripción**
 
 [Ver diagramas de secuencia](./07-vistas/procesos.md)

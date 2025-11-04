@@ -1,11 +1,15 @@
 # Diagrama de Secuencia
 
 ## Índice
-1. [Descripción General](#descripción-general)
-2. [Diagrama](#diagrama)
-3. [Líneas de Tiempo](#líneas-de-tiempo)
-4. [Interacción](#interacción)
-5. [Flujos Principales](#flujos-principales)
+- [Diagrama de Secuencia](#diagrama-de-secuencia)
+  - [Índice](#índice)
+  - [Descripción General](#descripción-general)
+  - [Diagrama](#diagrama)
+  - [Líneas de tiempo](#líneas-de-tiempo)
+  - [Flujos Principales](#flujos-principales)
+    - [1. Registro y Creación de Usuario](#1-registro-y-creación-de-usuario)
+    - [2. Manejo de Errores](#2-manejo-de-errores)
+    - [3. Capas de la Arquitectura](#3-capas-de-la-arquitectura)
 
 ## Descripción General
 Este diagrama representa el flujo de interacción entre los diferentes componentes del sistema Nexa, siguiendo los principios de Clean Architecture y mostrando la separación clara de responsabilidades.
@@ -69,9 +73,3 @@ Este diagrama representa el flujo de interacción entre los diferentes component
 - Dominio (Factory, Validator)
 - Infraestructura (Repository)
 
-### 4. Patrones Implementados
-- DTO Pattern
-- Factory Pattern
-- Repository Pattern
-- Validator Pattern
-- Mapper Pattern

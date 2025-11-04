@@ -1,4 +1,4 @@
-## 🌐 Diagrama de Componentes para el Componente: Nexa (Frontend)
+## Diagrama de Componentes para el Componente: Nexa (Frontend)
 
 | Componente | Descripción | Motivación | Depende/Usa | Tipo |
 | :--- | :--- | :--- | :--- | :--- |

@@ -51,5 +51,5 @@ Este documento describe la estructura de paquetes del backend de Nexa, siguiendo
 | **impl** | interactor | Paquete que agrupa las clases concretas que implementa el interactor de la capa application de nexa. | domain, dto, mapper |
 | **mapper** | interactor | Paquete que agrupa mapeadores entre DTO y domain. | domain, dto |
 | **domain** | usecase | Paquete que agrupa todos los dominios (entidades) de la capa de applicationcore de la aplicación microservice. | |
-| **impl** | usecase | Paquete que agrupa todas las implementaciones concretas de los casos de uso de la capa de applicationcore de la aplicación nexa y puede usar el contenido de ports. | entity, ports, domain |
+| **impl** | usecase | Paquete que agrupa todas las implementaciones concretas de los casos de uso de la capa de applicationcore de la aplicación nexa y puede usar el contenido de ports. | entity, ports, domain, mapper |
 | **mapper** | usecase | Paquete que agrupa mapeadores entre entidades y dominio. | entity, domain |

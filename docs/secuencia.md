@@ -6,13 +6,14 @@
   - [Descripción General](#descripción-general)
   - [Diagrama](#diagrama)
   - [Líneas de tiempo](#líneas-de-tiempo)
+    - [**Interacción**](#interacción)
   - [Flujos Principales](#flujos-principales)
-    - [1. Registro y Creación de Usuario](#1-registro-y-creación-de-usuario)
+    - [1. Ejecución de Operación](#1-ejecución-de-operación)
     - [2. Manejo de Errores](#2-manejo-de-errores)
     - [3. Capas de la Arquitectura](#3-capas-de-la-arquitectura)
 
 ## Descripción General
-Este diagrama representa el flujo de interacción entre los diferentes componentes del sistema Nexa, siguiendo los principios de Clean Architecture y mostrando la separación clara de responsabilidades.
+Este diagrama representa el flujo de interacción entre los diferentes componentes del sistema **Nexa**, siguiendo los principios de **Clean Architecture** y mostrando la separación clara de responsabilidades para la ejecución de una **operación transaccional genérica**.
 
 ## Diagrama
 ![Diagrama de Secuencia](../diagramas/secuencia.png)
@@ -31,14 +32,16 @@ Este diagrama representa el flujo de interacción entre los diferentes component
 | **Mapper**     | Convierte el objeto de Dominio en una Entidad lista para persistencia.                       |
 | **Repository** | Capa responsable del acceso a datos. Recibe el objeto Entidad para persistirlo.              |
 
-**Interacción**
+---
+
+### **Interacción**
 
 | **Acción**                            | **Origen** | **Destino** | **Descripción**                                                                                           |
 | ------------------------------------- | ---------- | ----------- | --------------------------------------------------------------------------------------------------------- |
-| **1. POST /user(JSON)**               | Frontend   | Controller  | El cliente realiza una solicitud para crear un usuario, entregando los datos en formato JSON.             |
-| **2. mapJsonToDTO / normalize(JSON)** | Controller | DTO         | El Controller inicia el proceso de mapeo y normalización de los datos recibidos.                          |
+| **1. execute(JSON)**                  | Frontend   | Controller  | El cliente inicia la ejecución de la operación, entregando los datos en formato JSON.                    |
+| **2. mapJsonToDTO / normalize(JSON)** | Controller | DTO         | El Controller inicia el mapeo y normalización de los datos de entrada.                                    |
 | **3. DTO (Normalizado)**              | DTO        | Controller  | El DTO devuelve la información validada y normalizada al Controller.                                      |
-| **4. execute(DTO)**                   | Controller | Interactor  | El Controller delega la ejecución de la transacción al Interactor, quien inicia la orquestación.          |
+| **4. execute(DTO)**                   | Controller | Interactor  | El Controller delega la ejecución de la transacción al Interactor, quien orquesta el flujo completo.      |
 | **5. toDomain(DTO)**                  | Interactor | Factory     | El Interactor solicita la creación del objeto de Dominio a partir del DTO.                                |
 | **6. Domain Object**                  | Factory    | Interactor  | El Factory devuelve el objeto de Dominio validado en su construcción.                                     |
 | **7. execute(Domain)**                | Interactor | UseCase     | El Interactor delega la ejecución del flujo principal al Caso de Uso.                                     |
@@ -46,30 +49,35 @@ Este diagrama representa el flujo de interacción entre los diferentes component
 | **9. return exception (si aplica)**   | Validator  | UseCase     | Si las reglas no se cumplen, el Validador genera una excepción que interrumpe la transacción.             |
 | **10. toEntity(Domain)**              | UseCase    | Mapper      | Si las validaciones se cumplen, el Caso de Uso convierte el objeto de Dominio en una Entidad persistible. |
 | **11. Entity**                        | Mapper     | UseCase     | El Mapper devuelve la Entidad al Caso de Uso.                                                             |
-| **12. execute(Entity)**               | UseCase    | Repository  | Se ejecuta la persistencia de la Entidad contra la fuente de datos.                                       |
-| **13. return void**                   | Repository | UseCase     | La operación de persistencia se completa exitosamente.                                                    |
-| **14. return void**                   | UseCase    | Interactor  | El Caso de Uso notifica al Interactor la finalización exitosa.                                            |
-| **15. return void**                   | Interactor | Controller  | El Interactor confirma al Controller que la transacción fue completada.                                   |
-| **16. return 201 Created**            | Controller | Frontend    | La API responde al cliente confirmando la creación exitosa del usuario.                                   |
+| **12. execute(Entity)**               | UseCase    | Repository  | Se ejecuta la persistencia o acción correspondiente contra la fuente de datos.                            |
+| **13. return**                        | Repository | UseCase     | La operación en la capa de datos se completa exitosamente.                                                |
+| **14. return**                        | UseCase    | Interactor  | El Caso de Uso notifica al Interactor la finalización del proceso.                                        |
+| **15. toDTO(Domain)**                 | Interactor | DTO         | El Interactor mapea el objeto de Dominio resultante a un DTO de salida.                                   |
+| **16. return DTO**                    | DTO        | Interactor  | El DTO de respuesta (output) es devuelto al Interactor.                                                   |
+| **17. return DTO**                    | Interactor | Controller  | El Interactor propaga el DTO de respuesta al Controller.                                                  |
+| **18. return JSON**                   | Controller | Frontend    | El Controller responde al cliente con el JSON finalizado, incluyendo el resultado y estado HTTP adecuado. |
+
+---
 
 ## Flujos Principales
 
-### 1. Registro y Creación de Usuario
-- Recepción de datos del usuario
-- Validación y normalización
-- Creación del objeto de dominio
-- Validación de reglas de negocio
-- Persistencia en base de datos
+### 1. Ejecución de Operación
+- Recepción de datos desde el cliente.  
+- Normalización y validación inicial.  
+- Creación del objeto de dominio.  
+- Validación de reglas de negocio.  
+- Ejecución de la operación en la capa de datos.  
+- Retorno de la respuesta estructurada.
 
 ### 2. Manejo de Errores
-- Validación de datos de entrada
-- Manejo de excepciones de negocio
-- Respuestas HTTP apropiadas
+- Validación de datos de entrada.  
+- Excepciones de negocio centralizadas.  
+- Uso del catálogo de mensajes para todas las respuestas de error.  
+- Respuestas HTTP adecuadas según el tipo de error.
 
 ### 3. Capas de la Arquitectura
-- Presentación (Frontend)
-- API (Controller)
-- Aplicación (Interactor, UseCase)
-- Dominio (Factory, Validator)
+- Presentación (Frontend)  
+- API (Controller)  
+- Aplicación (Interactor, UseCase)  
+- Dominio (Factory, Validator)  
 - Infraestructura (Repository)
-

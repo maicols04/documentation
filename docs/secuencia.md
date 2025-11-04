@@ -1,7 +1,19 @@
-**Diagrama de secuencia**
+# Diagrama de Secuencia
 
+## Índice
+1. [Descripción General](#descripción-general)
+2. [Diagrama](#diagrama)
+3. [Líneas de Tiempo](#líneas-de-tiempo)
+4. [Interacción](#interacción)
+5. [Flujos Principales](#flujos-principales)
 
-**Líneas de tiempo**
+## Descripción General
+Este diagrama representa el flujo de interacción entre los diferentes componentes del sistema Nexa, siguiendo los principios de Clean Architecture y mostrando la separación clara de responsabilidades.
+
+## Diagrama
+![Diagrama de Secuencia](../diagramas/secuencia.png)
+
+## Líneas de tiempo
 
 | **Nombre**     | **Descripción**                                                                              |
 | -------------- | -------------------------------------------------------------------------------------------- |
@@ -35,3 +47,31 @@
 | **14. return void**                   | UseCase    | Interactor  | El Caso de Uso notifica al Interactor la finalización exitosa.                                            |
 | **15. return void**                   | Interactor | Controller  | El Interactor confirma al Controller que la transacción fue completada.                                   |
 | **16. return 201 Created**            | Controller | Frontend    | La API responde al cliente confirmando la creación exitosa del usuario.                                   |
+
+## Flujos Principales
+
+### 1. Registro y Creación de Usuario
+- Recepción de datos del usuario
+- Validación y normalización
+- Creación del objeto de dominio
+- Validación de reglas de negocio
+- Persistencia en base de datos
+
+### 2. Manejo de Errores
+- Validación de datos de entrada
+- Manejo de excepciones de negocio
+- Respuestas HTTP apropiadas
+
+### 3. Capas de la Arquitectura
+- Presentación (Frontend)
+- API (Controller)
+- Aplicación (Interactor, UseCase)
+- Dominio (Factory, Validator)
+- Infraestructura (Repository)
+
+### 4. Patrones Implementados
+- DTO Pattern
+- Factory Pattern
+- Repository Pattern
+- Validator Pattern
+- Mapper Pattern

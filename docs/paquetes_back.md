@@ -1,4 +1,19 @@
-## 📦 Diagrama de Paquetes: nexa backend
+# Diagrama de Paquetes: Backend Nexa
+
+## Índice
+- [Diagrama de Paquetes: Backend Nexa](#diagrama-de-paquetes-backend-nexa)
+  - [Índice](#índice)
+  - [Descripción General](#descripción-general)
+  - [Diagrama](#diagrama)
+  - [Estructura de Paquetes](#estructura-de-paquetes)
+
+## Descripción General
+Este documento describe la estructura de paquetes del backend de Nexa, siguiendo los principios de Clean Architecture y organización modular.
+
+## Diagrama
+![Diagrama de Paquetes Backend](../diagramas/pauqete_back.png)
+
+## Estructura de Paquetes
 
 | Paquete | Paquete Padre | Descripción | Usa/Importa |
 | :--- | :--- | :--- | :--- |

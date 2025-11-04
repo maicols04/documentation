@@ -1,4 +1,18 @@
-## Diagrama de Paquetes para el Componente: nexa (Frontend)
+# Diagrama de Paquetes: Frontend Nexa
+
+## Índice
+1. [Descripción General](#descripción-general)
+2. [Diagrama](#diagrama)
+3. [Estructura de Paquetes](#estructura-de-paquetes)
+4. [Dependencias](#dependencias)
+
+## Descripción General
+Este documento describe la estructura de paquetes del frontend de Nexa, basada en una arquitectura moderna de Nuxt.js/Vue.js.
+
+## Diagrama
+![Diagrama de Paquetes Frontend](../diagramas/paquete_front.png)
+
+## Estructura de Paquetes
 Descripción: Diagrama que muestra la distribución de carpetas orientada a una estructura estándar de aplicación frontend (basada en Nuxt.js o Vue.js) y las dependencias o flujos entre ellas.
 
 | Paquete | Paquete padre | Descripción | Usa/Importa |

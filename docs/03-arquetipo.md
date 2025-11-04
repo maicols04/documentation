@@ -20,7 +20,13 @@ Para Nexa, el arquetipo se basa en una arquitectura modular con componentes reut
 
 ## Diagrama del Arquetipo
 
-![Arquetipo de Referencia](../diagramas/arquetipo_referencia.png)
+![Arquetipo de Referencia](../diagramas/arqueotipo.png)
+
+### Diagramas Relacionados
+- [Diagrama de Componentes Backend](../diagramas/componentes_backend.png)
+- [Diagrama de Componentes Frontend](../diagramas/componentes_front.png)
+- [Diagrama de Paquetes Backend](../diagramas/pauqete_back.png)
+- [Diagrama de Paquetes Frontend](../diagramas/paquete_front.png)
 
 ## Componentes Agnósticos
 

@@ -2,6 +2,10 @@
 
 ## Vista Funcional
 
+### Diagramas Relacionados
+- [Diagrama de Secuencia](../diagramas/secuencia.png)
+- [Diagrama de Arquitectura](../diagramas/arquitectura.png)
+
 ### Casos de Uso Principales
 
 1. **Gestión de Tienda**
@@ -22,7 +26,6 @@
    - Renovar automáticamente
    - Cancelar suscripción
 
-[Ver detalles de casos de uso](./07-vistas/casos-uso.md)
 
 ## Vista de Despliegue
 

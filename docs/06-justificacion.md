@@ -1,77 +1,78 @@
-# 6. Justificación de la Solución
+# Justificación de la Solución
 
 ## Justificación General
 
-La arquitectura seleccionada para Nexa se basa en componentes cloud modernos y servicios gestionados que equilibran seguridad, escalabilidad y costos. Esta elección se fundamenta en las necesidades específicas de una plataforma SaaS para pequeños negocios.
+La arquitectura de Nexa se diseñó pensando en emprendedores reales: personas que necesitan una plataforma confiable, que crezca con ellos y que no les complique la vida. Por eso se eligieron herramientas modernas en la nube que permiten escalar fácilmente, mantener los costos bajo control y ofrecer una experiencia segura para todos.
 
 ## Componentes Clave y su Justificación
 
 ### Infraestructura Base
-- **Cloudflare WAF**: Protección efectiva contra amenazas web
-- **Google Cloud API Gateway**: Gestión centralizada de APIs
-- **Firebase Auth**: Autenticación robusta y segura
+
+- **Cloudflare WAF**: Protege la plataforma de ataques sin que el usuario tenga que preocuparse.
+- **Google Cloud API Gateway**: Organiza todo lo que pasa entre el frontend y el backend, como si fuera un centro de control.
+- **Firebase Auth**: Permite que los usuarios inicien sesión de forma segura, sin tener que construir todo desde cero.
 
 ### Procesamiento y Datos
-- **Stripe**: Pagos seguros y suscripciones
-- **Redis**: Caché de alto rendimiento
-- **Firestore**: Base de datos NoSQL en tiempo real
+
+- **Stripe**: Se encarga de los pagos y suscripciones, con confianza y sin complicaciones.
+- **Redis**: Acelera la plataforma, guardando datos temporales para que todo cargue más rápido.
+- **Firestore**: Guarda la información de forma flexible y en tiempo real, ideal para una plataforma dinámica.
 
 ### Frontend y Backend
-- **Nuxt.js**: SSR y optimización SEO
-- **NestJS**: Backend modular y escalable
-- **TypeScript**: Código seguro y mantenible
+
+- **Nuxt.js**: Permite que el sitio cargue rápido y se vea bien en buscadores.
+- **NestJS**: Organiza el backend como si fuera una caja de herramientas bien ordenada.
+- **TypeScript**: Ayuda a que el código sea más claro y fácil de mantener.
 
 ## Ventajas
 
 1. **Escalabilidad**
-   - Servicios cloud auto-escalables
-   - Capacidad de crecimiento flexible
-   - Adaptación a demanda variable
+   - La infraestructura se adapta si Nexa crece.
+   - No hay necesidad de rehacer todo.
+   - Se ajusta automáticamente a la demanda.
 
 2. **Costos**
-   - Modelo pay-as-you-go
-   - Sin inversión inicial grande
-   - Costos predecibles
+   - Se paga solo por lo que se usa.
+   - No hay gastos innecesarios.
+   - Los costos son predecibles.
 
 3. **Desarrollo**
-   - Stack moderno y productivo
-   - Herramientas maduras
-   - Ecosistema robusto
+   - El equipo puede avanzar rápido.
+   - Se usan herramientas probadas.
+   - El ecosistema es confiable.
 
 4. **Mantenibilidad**
-   - Arquitectura modular
-   - Código tipado
-   - Testing integrado
+   - El código está bien organizado.
+   - Es fácil hacer cambios sin romper nada.
+   - Se puede probar y mejorar continuamente.
 
 ## Desventajas
 
 1. **Dependencia de Proveedores**
-   - Vendor lock-in potencial
-   - Cambios en pricing
-   - Límites de servicios
+   - Puede haber cambios en precios o servicios.
+   - Existe el riesgo de quedar atado a un proveedor.
 
 2. **Complejidad**
-   - Curva de aprendizaje inicial
-   - Integración de servicios
+   - Al principio puede parecer complicado.
+   - Requiere integrar varios servicios.
 
 3. **Costos Variables**
-   - Scaling costs
-   - Network egress
-   - Storage growth
+   - El crecimiento puede aumentar los costos.
+   - Hay que vigilar el uso de red y almacenamiento.
 
 ## Mitigación de Riesgos
 
 1. **Vendor Lock-in**
-   - Arquitectura modular
-   - Interfaces abstractas
-   - Documentación detallada
+   - Se usa una arquitectura modular.
+   - Se definen interfaces claras.
+   - Se documenta todo para facilitar cambios.
 
 2. **Complejidad**
-   - Training continuo
-   - Documentación clara
-   - Monitoreo robusto
+   - Se ofrece capacitación continua.
+   - La documentación es clara y accesible.
+   - Se implementa monitoreo robusto.
 
 3. **Costos**
-   - Budgeting detallado
-   - Alertas de uso
-   - Optimización continua
+   - Se hace seguimiento detallado del presupuesto.
+   - Se configuran alertas de uso.
+   - Se optimiza constantemente la infraestructura.

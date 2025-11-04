@@ -2,6 +2,14 @@
 
 Para Nexa, la alternativa seleccionada se basa en componentes como WAF, API Gateway, etc., porque equilibran seguridad, escalabilidad y costos bajos. Se elige sobre otras (ej. AWS full) por conveniencia despues de analizar cada posible tecnologia, integración con Firebase/Stripe y foco en SaaS.
 
+## Diagrama del Arquetipo
+![Arquetipo de Referencia](../../diagramas/arqueotipo.png)
+
+## Diagramas Relacionados
+- [Diagrama de Componentes Backend](../../diagramas/componentes_backend.png)
+- [Diagrama de Componentes Frontend](../../diagramas/componentes_front.png)
+- [Diagrama de Arquitectura del Sistema](../../diagramas/arquitectura.png)
+
 | Componente | Tipo componente | Descripción | Justificación | ¿Es un bloque de construcción? | Tipo Componente Construcción |
 |------------|-----------------|-------------|---------------|--------------------------------|------------------------------|
 | WAF | Componente adoptado | Ver descripción | Para Nexa, el WAF es un componente imprescindible porque actúa como un escudo que protege la aplicación frente a amenazas externas. Su función es revisar las solicitudes que llegan al sistema y bloquear aquellas que puedan ser maliciosas. Gracias a esto, evita ataques comunes que podrían dañar o alterar el funcionamiento de la plataforma, ayudando a mantenerla segura, estable y confiable para todos sus usuarios. | SI | Genérico |

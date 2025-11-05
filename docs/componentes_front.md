@@ -1,5 +1,7 @@
 ## Diagrama de Componentes para el Componente: Nexa (Frontend)
 
+[← Volver a Componentes Front / Back](../DAS.md#componentes-front--back)
+
 | **Componente** | **Estereotipo / Versión** | **Descripción** | **Motivación** | **Depende / Usa** | **Tipo** |
 | --------------- | -------------------------- | ---------------- | ---------------- | ------------------ | -------- |
 | **Nexa** | <<>dist>> nexa | Componente que representa el **frontend** de la aplicación Nexa, construido sobre un framework para interfaces de usuario reactivas y optimizadas para web. Integra lógica de presentación y consumo de servicios externos. | Artefacto final de la solución de frontend. | **nuxt.js 4**, **Node.js 22** | **Componente Propio a desarrollar** |

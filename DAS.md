@@ -1,12 +1,82 @@
 # Documento de Arquitectura de Software (DAS)
 
+[📖 Ir al README](./README.md)
+
 **Proyecto**  
 Nexa
 
 **Arquitectos**  
 Maicol Oviedo Quintero
 
-## Índice 
+## Índice
+
+1. [Información General](#info-general)
+2. [Restricciones Técnicas](#restricciones-tecnicas)  
+3. [Restricciones de Negocio](#restricciones-negocio)
+4. [Atributos de Calidad](#atributos-calidad)
+5. [Funcionalidades Críticas](#funcionalidades-criticas)
+6. [Componentes](#componentes-seccion)
+7. [Implementación](#implementacion-seccion)
+8. [Componentes Adoptados](#componentes-adoptados-seccion)
+9. [Componentes Desarrollados](#componentes-desarrollados-seccion)
+10. [Motivadores](#motivadores-seccion)
+11. [Arquetipo](#arquetipo-seccion)
+12. [Arquitectura](#arquitectura-seccion)
+13. [Línea Base](#linea-base-seccion)
+14. [Vistas](#vistas-seccion)
+    - [Componentes Backend](#componentes-backend)
+    - [Componentes Frontend](#componentes-frontend)
+    - [Paquetes Back/Front](#paquetes-backfront)
+    - [Diagrama de Secuencia](#secuencia-diagrama)
+15. [Justificación](#justificacion-seccion)
+
+## Navegación por contenido
+
+- [Información General](#info-general)
+- [Restricciones Técnicas](#restricciones-tecnicas)
+- [Restricciones de Negocio](#restricciones-negocio)
+- [Atributos de Calidad](#atributos-calidad)
+- [Funcionalidades Críticas](#funcionalidades-criticas)
+
+### Diagramas y Diseño
+- [Componentes](#componentes-seccion)
+- [Arquetipo](#arquetipo-seccion)
+- [Arquitectura](#arquitectura-seccion)
+
+### Vistas del Sistema
+- [Vista de Componentes Back](#componentes-backend)
+- [Vista de Componentes Front](#componentes-frontend)
+- [Vista de Paquetes](#paquetes-backfront)
+- [Vista de Secuencia](#secuencia-diagrama)
+
+### Detalles Técnicos
+- [Implementación](#implementacion-seccion)
+- [Componentes Adoptados](#componentes-adoptados-seccion)
+- [Componentes Desarrollados](#componentes-desarrollados-seccion)
+- [Línea Base](#linea-base-seccion)
+- [Justificación](#justificacion-seccion)
+
+## Índice
+
+1. [Información General](#info-general)
+2. [Restricciones Técnicas](#restricciones-tecnicas) 
+3. [Restricciones de Negocio](#restricciones-negocio)
+4. [Atributos de Calidad](#atributos-calidad)
+5. [Funcionalidades Críticas](#funcionalidades-criticas)
+6. [Componentes](#componentes)
+7. [Implementación](#implementacion)
+8. [Componentes Adoptados](#componentes-adoptados)
+9. [Componentes Desarrollados](#componentes-desarrollados)
+10. [Motivadores](#motivadores)
+11. [Arquetipo](#arquetipo)
+12. [Arquitectura](#arquitectura)
+13. [Línea Base](#linea-base)
+14. [Vistas](#vistas)
+    - [Componentes Backend](#componentes-back)
+    - [Componentes Frontend](#componentes-front)
+    - [Paquetes Back/Front](#paquetes-back-front)
+    - [Diagrama de Secuencia](#secuencia)
+15. [Justificación](#justificacion) 
 
 - [1. Información General](#1-información-general)
   - [Control de cambios y revisiones](#control-de-cambios-y-revisiones)
@@ -30,7 +100,40 @@ Maicol Oviedo Quintero
 
 ---
 
-## Control de cambios y revisiones
+## Navegación por contenido
+
+- [Información General](#info-general)
+- [Restricciones Técnicas](#restricciones-tecnicas)
+- [Restricciones de Negocio](#restricciones-negocio)
+- [Atributos de Calidad](#atributos-calidad)
+- [Funcionalidades Críticas](#funcionalidades-criticas)
+
+### Diagramas y Diseño
+- [Componentes](#componentes)
+- [Arquetipo](#arquetipo)
+- [Arquitectura](#arquitectura)
+
+### Vistas del Sistema
+- [Vista de Componentes Back](#componentes-back)
+- [Vista de Componentes Front](#componentes-front)
+- [Vista de Paquetes](#paquetes-back-front)
+- [Vista de Secuencia](#secuencia)
+
+### Detalles Técnicos
+- [Implementación](#implementacion)
+- [Componentes Adoptados](#componentes-adoptados)
+- [Componentes Desarrollados](#componentes-desarrollados)
+- [Línea Base](#linea-base)
+- [Justificación](#justificacion)
+
+
+<a name="información-general"></a>
+<a name="informacion-general"></a>
+<a name="info-general"></a>
+<a name="info-general"></a>
+## 1. Información General
+
+### Control de cambios y revisiones
 
 | Versión | Fecha | Autor | Descripción de cambios |
 |---------|-------|-------|------------------------|
@@ -41,11 +144,14 @@ Maicol Oviedo Quintero
 Para Emprendedores y pequeños negocios que venden productos (ropa, accesorios, belleza, etc.) por redes sociales y desean digitalizar su tienda sin conocimientos técnicos. Que necesitan organizar su catálogo, pedidos e inventario de forma sencilla y profesional sin depender de hojas de cálculo o mensajes dispersos. Además no tienen claridad sobre sus ventas, productos más vendidos ni el crecimiento del negocio, porque todo se maneja de forma manual. Nexa es una Plataforma web que ofrece organización profesional, gestión de pedidos y visibilidad clara del rendimiento del negocio. Facilita la creación de una tienda online profesional en minutos, permitiendo a los negocios vender de forma más organizada, automatizada y escalable. A diferencia de muchos negocios que utilizan cuadernos, hojas de cálculo o simplemente memoria para llevar el control de productos y ventas. Algunos usan apps como Excel, Shopify o Tiendanube, pero no están optimizadas para usuarios sin conocimientos técnicos o con necesidades simples. Estas herramientas suelen ser complejas, poco intuitivas o demasiado costosas para negocios que están comenzando. Nuestro producto es una plataforma simple e intuitiva, diseñada para emprendedores y pequeños negocios que venden principalmente a través de redes sociales. Pensada para usuarios sin experiencia técnica, permite crear una tienda online funcional en minutos, con control de stock y estadísticas claras de ventas. A precios accesibles y sin complicaciones técnicas, la plataforma integra fácilmente canales como WhatsApp, convirtiendo la venta informal en una operación más profesional, organizada y escalable.
 
 
+<a name="motivadores"></a>
 ## 2. Motivadores de la arquitectura
 
 Los motivadores de la arquitectura son los factores clave que guían el diseño y desarrollo del proyecto, asegurando que la solución cumpla con las necesidades técnicas, de negocio y de calidad.
 
-### 2.1 Restricciones técnicas
+<a name="restricciones-tecnicas"></a>
+<a name="restricciones-tecnicas"></a>
+### 2.1 Restricciones Técnicas
 
 Las restricciones técnicas son limitaciones impuestas por el entorno tecnológico, como hardware, software o estándares, que impactan el diseño. A continuación, se listan las restricciones técnicas identificadas, con su tipo y justificación:
 
@@ -65,7 +171,9 @@ Las restricciones técnicas son limitaciones impuestas por el entorno tecnológi
 | Metodológico | Se debe propender por la aplicación de metodologías ágiles. | Las metodologías ágiles, como Scrum, nos permiten ser flexibles y responder rápidamente a los cambios del mercado. Al trabajar en ciclos cortos (sprints), podemos entregar valor a los emprendedores de Nexa de manera constante y ajustar el producto en función de su feedback. |
 | Diseño | Se debe propender por la documentación de APIs y módulos, usando el principio code as documentation. | Es fundamental para Nexa porque permite al cliente mantener una plataforma fácil de actualizar y escalar, reduciendo costos y tiempos de desarrollo. Por ejemplo, una API bien documentada asegura que los desarrolladores integren nuevos servicios rápidamente sin errores, mientras que un código autoexplicativo (siguiendo Clean Code) minimiza la necesidad de manuales extensos para módulos. Esto garantiza que los vendedores disfruten de una plataforma estable y que el cliente incorpore nuevos desarrolladores o socios externos sin retrasos, manteniendo competitividad y continuidad. |
 
-### 2.2 Restricciones de negocio
+<a name="restricciones-de-negocio"></a>
+<a name="restricciones-negocio"></a>
+### 2.2 Restricciones de Negocio
 
 Las restricciones de negocio son limitaciones derivadas de objetivos comerciales, presupuestos o regulaciones. A continuación, se listan las restricciones de negocio identificadas, con su tipo, importancia, riesgos y planes de acción:
 
@@ -80,7 +188,9 @@ Las restricciones de negocio son limitaciones derivadas de objetivos comerciales
 | Procesos | El cliente espera que TI sea un actor clave responsable de la definición del proceso de negocio, cuando no es su responsabilidad, dado que TI habilita procesos de negocio y no los define. | Confusión de roles puede generar reprocesos y mal diseño del sistema. | Reprocesos; Fracaso del proyecto; Retraso del proyecto; Malas definiciones | Se debe aclarar desde el inicio que TI no define procesos de negocio, sino que los habilita. Toda decisión funcional debe venir validada por los responsables del negocio, y TI solo la traduce en soluciones tecnológicas. Esto evita malentendidos y ajustes posteriores por definiciones incorrectas. Para que el proyecto no se descarrile, es clave dejar claro desde el principio que TI no define cómo debe funcionar el negocio. Esa responsabilidad es del cliente. TI está para convertir esas decisiones en soluciones tecnológicas, no para inventarlas. Si eso no se aclara, se corre el riesgo de construir cosas que luego no sirven. Para evitar malas definiciones, hay que dejar claro desde el principio que TI no decide cómo debe funcionar el negocio. Esa parte le corresponde al cliente. Si no se define bien desde el lado funcional, TI termina construyendo sobre suposiciones, y eso casi siempre lleva a ajustes, reprocesos o entregables que no sirven. |
 | Procesos | Se debe asegurar el cumplimiento de la normatividad colombiana vigente en materia de comercio electrónico, protección al consumidor y tributación digital, especialmente en lo relacionado con el cobro de suscripciones en plataformas SaaS. | Afecta directamente los flujos de pago de suscripciones, que deben contemplar reglas legales específicas y trazabilidad completa. | Retraso del proyecto | Incluir revisión legal periódica, asignar responsable de cumplimiento normativo y realizar auditorías internas de avance. |
 
-### 2.3 Atributos de calidad
+<a name="atributos-de-calidad"></a>
+<a name="atributos-calidad"></a>
+### 2.3 Atributos de Calidad
 
 Los atributos de calidad definen las características no funcionales como rendimiento, usabilidad, etc. A continuación, se detallan los atributos identificados, con sus características y escenarios de calidad.
 
@@ -124,6 +234,7 @@ Los atributos de calidad definen las características no funcionales como rendim
 |---------------|--------|------|----------|-------------|---------------|---------------------|----------|----------|-----------|-----------|------------------------|-----------|
 | ESC-CAL-Seguridad-0007 | Ingreso a la aplicación desde un nuevo dispositivo con un doble factor de autenticación válido dentro del tiempo de vigencia del código | Flujo básico | Asegurar que un usuario que intenta acceder desde un nuevo dispositivo pueda ingresar a la aplicación con un doble factor de autenticación válido | Escenario que permite garantizar que cuando un usuario ingrese desde un nuevo dispositivo despues de diligenciar de manera correcta su nombre de usuario y clave válida, le sea enviado a su correo electrónico o celular un segundo factor de autenticación, el cual procederá a registrar dentro del sitio dentro del tiempo límite permitido, antes de que el código haya vencido. | El usuario que intenta acceder desde un nuevo dispositivo ha registrado de forma exitosa el código enviado a su correo electrónico dentro del tiempo límite de vigencia permitido, logrando de esta manera que la aplicación le permita su ingreso y lo lleve a la página principal donde le muestra las opciones disponibles de acuerdo al rol que posee. | Cualquier usuario que haga uso de los servicios autenticados de la aplicación | El usuario ha digitado correctamente un código que le fue enviado al correo electrónico como doble factor de autenticación dentro del tiempo de vigencia del mismo y ha ejecutado la acción ingresar | Operación normal | Sistema | El sistema lo direcciona a la página principal donde le muestra las opciones disponibles de acuerdo al rol que posee. | El usuario que intenta acceder desde un nuevo dispositivo se le ha solicitado un doble factor de autenticación para poder ingresar a la aplicación y al final ha podido ingresar a la aplicación de forma exitosa, luego de haber registrado el código que le fue enviado a su correo electrónico o celular dentro del tiempo de vigencia de este. | No |
 
+<a name="funcionalidades-criticas"></a>
 ### 2.4 Funcionalidades críticas
 
 Las funcionalidades críticas son las operaciones esenciales con restricciones funcionales. A continuación, se listan con su tipo, descripción y tácticas/estrategias:
@@ -144,6 +255,7 @@ Las funcionalidades críticas son las operaciones esenciales con restricciones f
 | Reto técnico | Requerimiento funcional | REQ-FUN-012 - El sistema debe manejar automáticamente el procesamiento de imágenes (optimización, versiones, cacheo y validación de seguridad). | Procesamiento de imágenes en el backend | Se implementará un proceso de fondo en el backend para manejar las imágenes subidas. Este proceso forzará la conversión al formato WebP o AVIF con una calidad del 75-80%, redimensionando la imagen a un tamaño máximo predefinido. Además, creará dos versiones adicionales: una principal y una miniatura (thumbnail). Todas las imágenes procesadas se suben a un servicio de almacenamiento en la nube (como Firebase Storage), y se sirven a través de la CDN integrada de Vercel, lo que garantiza una entrega rápida y eficiente a nivel global. Antes del procesamiento, se validará que el archivo corresponda exclusivamente a formatos de imagen permitidos (como JPG, PNG, WebP o AVIF), rechazando cualquier extensión extraña o no compatible para garantizar seguridad y consistencia en el flujo. Asimismo, se eliminarán caracteres especiales o no estándar en el nombre del archivo, generando un identificador limpio y seguro que permita persistir la imagen sin riesgos ni ambigüedades en el almacenamiento. |
 
 
+<a name="arquetipo"></a>
 ## 5. Arquetipo de solución/referencia
 
 Un arquetipo de solución es un patrón genérico o framework de alto nivel para resolver problemas similares, de forma agnóstica a tecnologías específicas. Para Nexa, el arquetipo se basa en una arquitectura modular con componentes reutilizables para seguridad, gestión de API, identidad, pagos, notificaciones, caché, almacenamiento de claves, almacenamiento general, autenticación, base de datos, monitoreo, catálogo de parámetros y plataformas de aplicación cloud. La intención es promover escalabilidad, seguridad y eficiencia, motivado por las necesidades de pequeños negocios. Cada componente se adopta por su uso en entornos SaaS, justificado por reducción de complejidad y costos.
@@ -172,7 +284,10 @@ Detalle de componentes agnósticos (basado en "alternativa solucion", "bloques c
 | CLOUD APPLICATION PLATFORM | Componente adoptado | Ver descripción | Dentro de la arquitectura de Nexa, una Cloud Application Platform cumple un papel clave en cómo se entrega y actualiza el frontend. Gracias a su infraestructura sin servidores y a su red de distribución de contenido (CDN), permite que la aplicación esté disponible en todo el mundo y que las páginas se carguen rápido y sin interrupciones. Además, su capacidad para escalar automáticamente garantiza que el frontend siempre funcione de forma segura, confiable y alineada con los principios de una arquitectura moderna en la nube. | SI | Genérico |
 
 
+<a name="arquitectura"></a>
 ## 6. Arquitectura de solución/referencia
+
+![Arquitectura de Solución](./diagramas/arquitectura.png)
 
 La arquitectura de solución es el diseño específico adaptado al proyecto. [Inserta de tu Excel "arquitectura de referencia", con detalles concretos, nombres de componentes y justificación. Enlaza imágenes si hay].
 
@@ -194,6 +309,7 @@ La arquitectura de solución es el diseño específico adaptado al proyecto. [In
 | CLOUD APPLICATION PLATFORM | SI | Vercel, Inc. | Vercel | Latest | https | Vercel es la mejor opción para el frontend de Nexa porque ofrece una CDN global integrada optimizada específicamente para Nuxt, garantizando máximo rendimiento y SEO al servir los catálogos y páginas de las tiendas a gran velocidad en cualquier lugar del mundo. Además, minimiza los costos operativos gracias a su escalabilidad instantánea y despliegue zero-config, permitiendo a Nexa enfocarse completamente en desarrollar nuevas funcionalidades sin preocuparse por la infraestructura de hosting. | Genérico |
 
 
+<a name="linea-base"></a>
 ## 7. Línea base arquitectónica
 
 | Componente | ¿Componente de Pago? | Tipo | Fabricante | Producto | Versión | Descripción | Justificación |
@@ -278,12 +394,15 @@ Maicol Oviedo Quintero
 
 AVISO: Este documento es una vista consolidada de la documentación del proyecto. Los archivos fuente permanecen en la carpeta `docs/`. Las imágenes referenciadas aquí apuntan a `./diagramas/`.
 
+<a name="vistas"></a>
+<a name="vistas-seccion"></a>
 ## 7. Vistas de Arquitectura
 
 ### 7.1 Diagrama de Secuencia
 
 El siguiente diagrama de secuencia muestra las interacciones principales entre los componentes del sistema durante el flujo de creación y gestión de una tienda:
 
+<a name="secuencia"></a>
 ![Diagrama de Secuencia](./diagramas/secuencia.png)
 
 #### Descripción del Flujo:
@@ -295,12 +414,14 @@ El siguiente diagrama de secuencia muestra las interacciones principales entre l
 6. Los datos se almacenan en Firestore
 7. Las imágenes se procesan y almacenan en Firebase Storage
 
+<a name="paquetes-back-front"></a>
+<a name="paquetes-backfront"></a>
 ### 7.2 Paquetes Frontend/Backend
 
 Los diagramas de paquetes muestran la organización lógica del código tanto en el frontend como en el backend:
 
 #### Frontend (Nuxt.js + TypeScript)
-![Diagrama de Paquetes Frontend](./diagramas/paquetes_front.png)
+![Diagrama de Paquetes Frontend](./diagramas/paquete_front.png)
 
 Organización de paquetes frontend:
 - pages/: Rutas y vistas de la aplicación
@@ -311,7 +432,7 @@ Organización de paquetes frontend:
 - types/: Definiciones de TypeScript
 
 #### Backend (NestJS + TypeScript)
-![Diagrama de Paquetes Backend](./diagramas/paquetes_back.png)
+![Diagrama de Paquetes Backend](./diagramas/pauqete_back.png)
 
 Organización de paquetes backend:
 - modules/: Módulos principales de la aplicación
@@ -320,10 +441,28 @@ Organización de paquetes backend:
 - domain/: Entidades y reglas de negocio
 - application/: Casos de uso
 
+<a name="componentes"></a>
+<a name="implementacion"></a>
+## Implementación
+
+La implementación de Nexa se realiza siguiendo los principios de Clean Architecture y las mejores prácticas de desarrollo. Los principales aspectos de implementación incluyen:
+
+- Frontend: Desarrollado con Nuxt.js y TypeScript
+- Backend: Construido con NestJS y TypeScript
+- APIs: RESTful con documentación OpenAPI
+- Base de datos: Firebase Firestore
+- Autenticación: Firebase Auth
+- Almacenamiento: Firebase Storage
+- Caché: Redis
+- Pagos: Stripe
+- Notificaciones: Mailgun
+
+<a name="componentes-seccion"></a>
 ### 7.3 Componentes Frontend/Backend
 
 Los diagramas de componentes muestran la estructura y relaciones entre los diferentes componentes del sistema:
 
+<a name="componentes-front"></a>
 #### Frontend
 ![Diagrama de Componentes Frontend](./diagramas/componentes_front.png)
 
@@ -335,8 +474,9 @@ Componentes principales frontend:
 - UIComponents: Componentes de interfaz
 - ApiService: Comunicación con backend
 
+<a name="componentes-back"></a>
 #### Backend
-![Diagrama de Componentes Backend](./diagramas/componentes_back.png)
+![Diagrama de Componentes Backend](./diagramas/componentes_backend.png)
 
 Componentes principales backend:
 - AuthController: Control de autenticación
@@ -346,40 +486,6 @@ Componentes principales backend:
 - NotificationService: Envío de correos
 - StorageService: Gestión de archivos
 
-## 1. Información General
-
-## Índice (navegación)
-
-Este índice permite navegar rápidamente por las secciones principales de este documento. Puedes usar los enlaces internos (anclas) o abrir directamente el archivo fuente en `docs/`.
-
-- [1. Información General](#1-información-general) — [fuente](docs/01-informacion-general.md)
-- [2. Motivadores de la Arquitectura](#2-motivadores-de-la-arquitectura) — [fuente](docs/02-motivadores.md)
-  - [2.1 Restricciones Técnicas](#21-restricciones-técnicas) — [fuente](docs/02-motivadores/2.1-restricciones-tecnicas.md)
-  - [2.2 Restricciones de Negocio](#22-restricciones-de-negocio) — [fuente](docs/02-motivadores/2.2-restricciones-negocio.md)
-  - [2.3 Atributos de Calidad](#23-atributos-de-calidad) — [fuente](docs/02-motivadores/2.3-atributos-calidad.md)
-  - [2.4 Funcionalidades Críticas](#24-funcionalidades-críticas) — [fuente](docs/02-motivadores/2.4-funcionalidades-criticas.md)
-- [3. Arquetipo de Solución](#5-arquetipo-de-solución) — [fuente](docs/03-arquetipo.md)
-  - [Detalle de Componentes](#detalle-de-componentes) — [fuente](docs/03-arquetipo/componentes.md)
-- [4. Arquitectura de Solución](#6-arquitectura-de-solución) — [fuente](docs/04-arquitectura.md)
-  - [Detalles de Implementación](#detalles-de-implementación) — [fuente](docs/04-arquitectura/implementacion.md)
-- [5. Línea Base Arquitectónica](#7-línea-base-arquitectónica) — [fuente](docs/05-linea-base.md)
-  - [Componentes Adoptados](#componentes-adoptados) — [fuente](docs/05-linea-base/componentes-adoptados.md)
-  - [Componentes Desarrollados](#componentes-desarrollados) — [fuente](docs/05-linea-base/componentes-desarrollados.md)
-- [6. Justificación de la Solución](#8-justificación-alternativa-de-solución) — [fuente](docs/06-justificacion.md)
-- [7. Vistas de Arquitectura](#7-vistas-de-arquitectura) — [fuente](docs/07-vistas.md)
-  - [Diagrama de Secuencia](#diagrama-de-secuencia) — [fuente](docs/secuencia.md)
-  - [Paquetes Front / Back](#paquetes-front--back) — [fuente](docs/paquetes_front.md)
-  - [Componentes Front / Back](#componentes-front--back) — [fuente](docs/componentes_front.md)
-
----
-
-# 1. Información General
-
-## Control de cambios y revisiones
-
-| Versión | Fecha | Autor | Descripción de cambios |
-|---------|-------|-------|------------------------|
-| 1.0    | 11/2025 | Maicol Oviedo Quintero | Versión inicial del documento. |
 
 ## Propósito del proyecto
 

@@ -1,5 +1,7 @@
 # Diagrama de Secuencia
 
+[← Volver a Diagrama de Secuencia](../DAS.md#diagrama-de-secuencia)
+
 ## Índice
 - [Diagrama de Secuencia](#diagrama-de-secuencia)
   - [Índice](#índice)

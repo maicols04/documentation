@@ -1,6 +1,6 @@
-# Diagrama de Paquetes: Backend Nexa
+[🔙 Volver al README](./README.md)
 
-[← Volver a Paquetes Front / Back](../DAS.md#paquetes-front--back)
+# Diagrama de Paquetes: Backend Nexa
 
 ## Índice
 - [Diagrama de Paquetes: Backend Nexa](#diagrama-de-paquetes-backend-nexa)

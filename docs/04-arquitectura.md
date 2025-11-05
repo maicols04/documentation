@@ -1,3 +1,5 @@
+[🔙 Volver al README](./README.md)
+
 # 4. Arquitectura de Solución
 
 La arquitectura de solución representa la implementación específica del arquetipo para Nexa, detallando los productos y tecnologías concretas seleccionadas para cada componente.

@@ -1,3 +1,5 @@
+[🔙 Volver al README](./README.md)
+
 # 2. Motivadores de la Arquitectura
 
 Los motivadores de la arquitectura son los factores clave que guían el diseño y desarrollo del proyecto, asegurando que la solución cumpla con las necesidades técnicas, de negocio y de calidad.

@@ -1,3 +1,5 @@
+[🔙 Volver al README](./README.md)
+
 # Detalle de Componentes
 
 Para Nexa, la alternativa seleccionada se basa en componentes como WAF, API Gateway, etc., porque equilibran seguridad, escalabilidad y costos bajos. Se elige sobre otras (ej. AWS full) por conveniencia despues de analizar cada posible tecnologia, integración con Firebase/Stripe y foco en SaaS.

@@ -1,6 +1,6 @@
-# 🛠️ Diagrama de Componentes para el Componente: Nexa backend
+[🔙 Volver al README](./README.md)
 
-[← Volver a Componentes Front / Back](../DAS.md#componentes-front--back)
+# 🛠️ Diagrama de Componentes para el Componente: Nexa backend
 
 Descripción: Diagrama que muestra el 100% de los componentes que serán construidos o adoptados para proceder con la construcción del componente indicado. Adicionalmente, indica cómo estos componentes están relacionados.
 

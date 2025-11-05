@@ -1,6 +1,6 @@
-## Diagrama de Componentes para el Componente: Nexa (Frontend)
+[🔙 Volver al README](./README.md)
 
-[← Volver a Componentes Front / Back](../DAS.md#componentes-front--back)
+## Diagrama de Componentes para el Componente: Nexa (Frontend)
 
 | **Componente** | **Estereotipo / Versión** | **Descripción** | **Motivación** | **Depende / Usa** | **Tipo** |
 | --------------- | -------------------------- | ---------------- | ---------------- | ------------------ | -------- |

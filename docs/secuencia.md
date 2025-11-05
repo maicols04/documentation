@@ -1,6 +1,6 @@
-# Diagrama de Secuencia
+[🔙 Volver al README](./README.md)
 
-[← Volver a Diagrama de Secuencia](../DAS.md#diagrama-de-secuencia)
+# Diagrama de Secuencia
 
 ## Índice
 - [Diagrama de Secuencia](#diagrama-de-secuencia)

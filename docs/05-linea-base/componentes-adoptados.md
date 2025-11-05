@@ -1,3 +1,5 @@
+[🔙 Volver al README](./README.md)
+
 # Componentes Adoptados
 
 | Componente | ¿Componente de Pago? | Fabricante | Producto | Versión | Protocolo de comunicación | Justificación | Tipo Bloque Construcción |

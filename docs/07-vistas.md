@@ -44,7 +44,7 @@
    - Redis Cache
    - Firebase Storage
 
-[Ver diagrama arquetipo](./diagramas/arqueotipo_referencia.png)
+[Ver diagrama arquetipo](./diagramas/arqueotipo.png)
 
 ## Vista de Procesos
 

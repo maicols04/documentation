@@ -1,12 +1,15 @@
+[🔙 Volver al README](./README.md)
+
 # Diagrama de Paquetes: Frontend Nexa
 
 [← Volver a Paquetes Front / Back](../DAS.md#paquetes-front--back)
 
 ## Índice
-1. [Descripción General](#descripción-general)
-2. [Diagrama](#diagrama)
-3. [Estructura de Paquetes](#estructura-de-paquetes)
-4. [Dependencias](#dependencias)
+- [Diagrama de Paquetes: Frontend Nexa](#diagrama-de-paquetes-frontend-nexa)
+  - [Índice](#índice)
+  - [Descripción General](#descripción-general)
+  - [Diagrama](#diagrama)
+  - [Estructura de Paquetes](#estructura-de-paquetes)
 
 ## Descripción General
 Este documento describe la estructura de paquetes del frontend de Nexa, basada en una arquitectura moderna de Nuxt.js/Vue.js.

@@ -1,3 +1,5 @@
+[🔙 Volver al README](./README.md)
+
 # 5. Línea Base Arquitectónica
 
 La línea base arquitectónica define los componentes fundamentales y tecnologías específicas que forman la base del sistema.

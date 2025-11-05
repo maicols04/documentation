@@ -587,7 +587,7 @@ Para Nexa, el arquetipo se basa en una arquitectura modular con componentes reut
   ![Diagrama de Componentes Backend](diagramas/componentes_backend.png)
   ![Diagrama de Componentes Frontend](diagramas/componentes_front.png)
   ![Diagrama de Paquetes Backend](diagramas/pauqete_back.png)
-  "[Diagrama de Paquetes Frontend](diagramas/paquete_front.png)
+  ![Diagrama de Paquetes Frontend](diagramas/paquete_front.png)
 
 ## Componentes Agnósticos
 
@@ -713,8 +713,8 @@ La línea base arquitectónica define los componentes fundamentales y tecnologí
 ## Vista Funcional
 
 ### Diagramas Relacionados
-- [Diagrama de Secuencia](../diagramas/secuencia.png)
-- [Diagrama de Arquitectura](../diagramas/arquitectura.png)
+  ![Diagrama de Secuencia](diagramas/secuencia.png)
+  ![Diagrama de Arquitectura](diagramas/arquitectura.png)
 
 ### Casos de Uso Principales
 
@@ -762,7 +762,8 @@ La línea base arquitectónica define los componentes fundamentales y tecnologí
 
 1. **Registro de Usuario**
 
-[Ver diagramas de secuencia](././docs/07-vistas/procesos.md)
+[Ver diagramas de secuencia](././docs/secuencia.md)
+![Ver diagramas de secuencia](./diagramas/secuencia.png)
 
 ---
 
